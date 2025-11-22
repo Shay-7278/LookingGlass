@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleVault - Your Digital Closet</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">STYLEVAULT</div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-section="closet">Closet</button>
+                <button class="nav-tab" data-section="outfits">Outfits</button>
+                <button class="nav-tab" data-section="saved">Saved</button>
+                <button class="nav-tab" data-section="analytics">Analytics</button>
+                <button class="nav-tab" data-section="ai">Style AI</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Closet Section -->
+        <section id="closet" class="section active">
+            <div class="closet-filters">
+                <button class="filter-btn active" data-filter="all">All Items</button>
+                <button class="filter-btn" data-filter="tops">Tops</button>
+                <button class="filter-btn" data-filter="bottoms">Bottoms</button>
+                <button class="filter-btn" data-filter="shoes">Shoes</button>
+                <button class="filter-btn" data-filter="accessories">Accessories</button>
+                <button class="filter-btn" data-filter="outerwear">Outerwear</button>
+            </div>
+            <div class="closet-grid" id="closetGrid">
+                <!-- Items will be added here dynamically -->
+            </div>
+        </section>
+
+        <!-- Outfit Builder Section -->
+        <section id="outfits" class="section">
+            <div class="outfit-builder">
+                <div class="outfit-categories">
+                    <div class="category-section">
+                        <div class="category-title">Tops</div>
+                        <div class="items-carousel" id="topsCarousel"></div>
+                    </div>
+                    <div class="category-section">
+                        <div class="category-title">Bottoms</div>
+                        <div class="items-carousel" id="bottomsCarousel"></div>
+                    </div>
+                    <div class="category-section">
+                        <div class="category-title">Shoes</div>
+                        <div class="items-carousel" id="shoesCarousel"></div>
+                    </div>
+                    <div class="category-section">
+                        <div class="category-title">Accessories</div>
+                        <div class="items-carousel" id="accessoriesCarousel"></div>
+                    </div>
+                </div>
+                <div class="outfit-preview">
+                    <div class="outfit-display" id="outfitDisplay">
+                        <div class="outfit-item" id="selectedTop">👔</div>
+                        <div class="outfit-item" id="selectedBottom">👖</div>
+                        <div class="outfit-item" id="selectedShoes">👟</div>
+                    </div>
+                    <button class="save-outfit-btn" onclick="saveOutfit()">Save Outfit</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Saved Outfits Section -->
+        <section id="saved" class="section">
+            <h2 class="section-heading">Your Saved Outfits</h2>
+            <div class="saved-outfits-grid" id="savedOutfitsGrid">
+                <!-- Saved outfits will appear here -->
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="section">
+            <div class="analytics-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Items</div>
+                    <div class="stat-value" id="totalItems">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Favorite Category</div>
+                    <div class="stat-value" id="favCategory">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Dominant Color</div>
+                    <div class="stat-value" id="domColor">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Saved Outfits</div>
+                    <div class="stat-value" id="savedCount">0</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Color Distribution</div>
+                <div class="color-distribution" id="colorChart"></div>
+            </div>
+        </section>
+
+        <!-- Style AI Section -->
+        <section id="ai" class="section">
+            <div class="ai-suggestions">
+                <div class="ai-header">
+                    <div class="ai-title">✨ AI Style Suggestions</div>
+                    <button class="generate-btn" onclick="generateSuggestions()">Generate Ideas</button>
+                </div>
+                <div class="suggestion-grid" id="suggestionGrid">
+                    <!-- AI suggestions will appear here -->
+                </div>
+            </div>
+
+            <div class="ai-suggestions">
+                <div class="ai-title mb-md">🎨 Your Style Profile</div>
+                <div id="styleProfile">
+                    <p>Based on your wardrobe, you lean towards a <strong id="styleType">casual-chic</strong> aesthetic with a preference for <strong id="colorPref">neutral tones</strong>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Item Button -->
+    <button class="add-item-btn" onclick="openModal()">+</button>
+
+    <!-- Add Item Modal -->
+    <div class="modal" id="addItemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Item</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <form id="addItemForm">
+                <div class="form-group">
+                    <label class="form-label">Item Name</label>
+                    <input type="text" class="form-input" id="itemName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-select" id="itemCategory" required>
+                        <option value="tops">Tops</option>
+                        <option value="bottoms">Bottoms</option>
+                        <option value="shoes">Shoes</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="outerwear">Outerwear</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Color</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" class="form-input" id="itemColor" value="#ff3366" style="width: auto;">
+                        <div class="color-preview" id="colorPreview" style="background: #ff3366;"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Brand (Optional)</label>
+                    <input type="text" class="form-input" id="itemBrand">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Season</label>
+                    <select class="form-select" id="itemSeason">
+                        <option value="all">All Seasons</option>
+                        <option value="spring">Spring</option>
+                        <option value="summer">Summer</option>
+                        <option value="fall">Fall</option>
+                        <option value="winter">Winter</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Icon</label>
+                    <select class="form-select" id="itemIcon">
+                        <option value="👔">👔 Shirt</option>
+                        <option value="👕">👕 T-Shirt</option>
+                        <option value="🧥">🧥 Jacket</option>
+                        <option value="👖">👖 Jeans</option>
+                        <option value="👗">👗 Dress</option>
+                        <option value="🩳">🩳 Shorts</option>
+                        <option value="👟">👟 Sneakers</option>
+                        <option value="👠">👠 Heels</option>
+                        <option value="👢">👢 Boots</option>
+                        <option value="🧢">🧢 Cap</option>
+                        <option value="👜">👜 Bag</option>
+                        <option value="🧣">🧣 Scarf</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Add to Closet</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modular JavaScript (ES6 Modules) -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

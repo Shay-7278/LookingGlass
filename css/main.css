@@ -1,0 +1,31 @@
+/* ==============================================
+   StyleVault - Main CSS Entry Point
+   ==============================================
+   This file imports all modular CSS files.
+   Import order matters for cascade precedence.
+   ============================================== */
+
+/* 1. Variables & Theme */
+@import 'variables.css';
+
+/* 2. Base Styles */
+@import 'base.css';
+
+/* 3. Layout */
+@import 'layout.css';
+
+/* 4. Components */
+@import 'components/header.css';
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/modal.css';
+@import 'components/closet.css';
+@import 'components/outfit-builder.css';
+@import 'components/analytics.css';
+@import 'components/ai-suggestions.css';
+
+/* 5. Utilities & Animations */
+@import 'utilities.css';
+
+/* 6. Responsive Overrides (must be last) */
+@import 'responsive.css';

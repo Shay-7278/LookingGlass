@@ -1,0 +1,61 @@
+/* ==============================================
+   Layout - Container & Section Styles
+   ============================================== */
+
+/* Main Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem var(--spacing-lg) var(--spacing-lg);
+    min-height: 100vh;
+}
+
+/* Section Styles */
+.section {
+    display: none;
+    animation: fadeIn var(--transition-medium);
+}
+
+.section.active {
+    display: block;
+}
+
+/* Grid Utilities */
+.grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gap Utilities */
+.gap-sm {
+    gap: var(--spacing-sm);
+}
+
+.gap-md {
+    gap: var(--spacing-md);
+}
+
+.gap-lg {
+    gap: var(--spacing-lg);
+}
