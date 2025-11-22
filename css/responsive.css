@@ -1,0 +1,90 @@
+/* ==============================================
+   Responsive Styles - Mobile Breakpoints
+   ============================================== */
+
+@media (max-width: 768px) {
+    /* Header */
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .nav-tabs {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .nav-tab {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.9rem;
+    }
+
+    /* Outfit Builder */
+    .outfit-builder {
+        grid-template-columns: 1fr;
+    }
+
+    .outfit-preview {
+        min-height: 400px;
+    }
+
+    .outfit-item {
+        width: 120px;
+        height: 120px;
+        font-size: 3rem;
+    }
+
+    /* Analytics */
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Closet Grid */
+    .closet-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .clothing-image {
+        height: 150px;
+        font-size: 3rem;
+    }
+
+    /* Container */
+    .container {
+        padding: 5rem var(--spacing-sm) var(--spacing-sm);
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 2rem;
+    }
+
+    /* Modal */
+    .modal-content {
+        padding: var(--spacing-md);
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-tabs {
+        flex-wrap: wrap;
+    }
+
+    .nav-tab {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    .closet-filters {
+        justify-content: center;
+    }
+
+    .filter-btn {
+        font-size: 0.85rem;
+    }
+
+    .suggestion-grid {
+        grid-template-columns: 1fr;
+    }
+}

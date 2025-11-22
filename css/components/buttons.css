@@ -1,0 +1,108 @@
+/* ==============================================
+   Button Styles
+   ============================================== */
+
+/* Add Item Floating Button */
+.add-item-btn {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    box-shadow: var(--shadow-accent);
+    transition: transform var(--transition-fast);
+    z-index: 999;
+}
+
+.add-item-btn:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: var(--spacing-sm);
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Filter Button */
+.filter-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    color: var(--text);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-btn.active {
+    background: var(--gradient-primary);
+    border-color: transparent;
+}
+
+/* Generate Button */
+.generate-btn {
+    padding: 0.75rem var(--spacing-md);
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.generate-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Save Outfit Button */
+.save-outfit-btn {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--gradient-success);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+
+.save-outfit-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Delete Button */
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 51, 102, 0.9);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
